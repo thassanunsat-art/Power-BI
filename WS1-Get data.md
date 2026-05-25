@@ -10,7 +10,7 @@
 2. คลิกปุ่ม **Get data**
 3. เลือก **Excel**
 4. คลิกปุ่ม **Connect**
-5. เลือกไฟล์ `workshop_data.xlsx`
+5. เลือกไฟล์ `workshop_all_provinces.xlsx`
 6. คลิกปุ่ม **Open**
 
 ---
