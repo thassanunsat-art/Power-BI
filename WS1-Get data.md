@@ -19,7 +19,7 @@
 **ขั้นตอนการคลิก:**
 1. ในหน้าต่าง Navigator ให้ติ๊ก ☑️ เลือกตารางข้อมูลที่ต้องการ
 2. คลิกปุ่ม **Transform Data**
-   <img width="436" height="338" alt="image" src="https://github.com/user-attachments/assets/0608961e-a608-435c-8410-14186adbf1a9" />
+   <img width="200" height="100" alt="image" src="https://github.com/user-attachments/assets/0608961e-a608-435c-8410-14186adbf1a9" />
 
 
 > ⚠️ **ข้อควรระวัง:** ✅ **ห้ามกดปุ่ม Load ในขั้นตอนนี้เด็ดขาด**
@@ -31,6 +31,7 @@
 * **ด้านซ้าย (Queries):** แสดงรายชื่อตารางที่กำลังทำงานอยู่
 * **ตรงกลาง:** แสดงข้อมูลในตาราง
 * **ด้านขวา (Applied Steps):** แสดงประวัติและขั้นตอนการจัดการข้อมูลทั้งหมด (สามารถลบหรือย้อนกลับได้)
+<img width="200" height="100" alt="image" src="https://github.com/user-attachments/assets/6d3f47d8-dadd-4983-b3b4-d24855f27781" />
 
 ---
 
