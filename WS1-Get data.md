@@ -19,6 +19,8 @@
 **ขั้นตอนการคลิก:**
 1. ในหน้าต่าง Navigator ให้ติ๊ก ☑️ เลือกตารางข้อมูลที่ต้องการ
 2. คลิกปุ่ม **Transform Data**
+   <img width="436" height="338" alt="image" src="https://github.com/user-attachments/assets/0608961e-a608-435c-8410-14186adbf1a9" />
+
 
 > ⚠️ **ข้อควรระวัง:** ✅ **ห้ามกดปุ่ม Load ในขั้นตอนนี้เด็ดขาด**
 
