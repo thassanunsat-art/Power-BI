@@ -13,6 +13,7 @@
 4. คลิกปุ่ม **Connect**
 5. เลือกไฟล์ `workshop_all_provinces_dirty.xlsx`
 6. คลิกปุ่ม **Open**
+
    <img width="50%" height="50%" alt="image" src="https://github.com/user-attachments/assets/7730cfc7-2ac7-4479-852c-f6d25551f430" />
 
 
