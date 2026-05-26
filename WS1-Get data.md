@@ -13,6 +13,11 @@
 4. คลิกปุ่ม **Connect**
 5. เลือกไฟล์ `workshop_all_provinces_dirty.xlsx`
 6. คลิกปุ่ม **Open**
+#### **ขั้นตอนการคลิก:**
+1. ในหน้าต่าง Navigator ให้ติ๊ก ☑️ เลือกตารางข้อมูลที่ต้องการ
+2. คลิกปุ่ม **Transform Data**
+
+> ⚠️ **ข้อควรระวัง:** ✅ **ห้ามกดปุ่ม Load ในขั้นตอนนี้เด็ดขาด**
 
    <img width="40%" height="40%" alt="image" src="https://github.com/user-attachments/assets/7730cfc7-2ac7-4479-852c-f6d25551f430" />
 
@@ -27,17 +32,6 @@
 <img width="40%" height="40%" alt="image" src="https://github.com/user-attachments/assets/c98e96bc-e70c-4931-a83e-c55c13f9f5c4" />
 
    
----
-
-## 🔍 ขั้นตอนที่ 3: เลือกตาราง และเข้า Power Query
-**ขั้นตอนการคลิก:**
-1. ในหน้าต่าง Navigator ให้ติ๊ก ☑️ เลือกตารางข้อมูลที่ต้องการ
-2. คลิกปุ่ม **Transform Data**
-
-> ⚠️ **ข้อควรระวัง:** ✅ **ห้ามกดปุ่ม Load ในขั้นตอนนี้เด็ดขาด**
-> 
- <img width="40%" height="40%" alt="image" src="https://github.com/user-attachments/assets/0608961e-a608-435c-8410-14186adbf1a9" />
-
 ---
 
 ## 💡 ขั้นตอนที่ 4: ทำความรู้จัก Power Query Editor
