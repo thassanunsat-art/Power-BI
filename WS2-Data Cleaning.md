@@ -1,6 +1,6 @@
 # 🛠️ Workshop: การใช้ Power Query 
 
-Get Data : 
+Get Data : https://github.com/thassanunsat-art/WS_POwerBI/blob/main/workshop_all_provinces_dirty.xlsx
 
 ### 📌 เคสที่ 1: วันที่หลายรูปแบบ (Date ไม่สะอาด)
 * **ลักษณะปัญหา:** วันที่ในคอลัมน์เดียวกันผสมกัน บางแถวเป็น `dd/mm/yyyy` บางแถว `yyyy-mm-dd` บางแถวเป็น Date จริง
