@@ -31,7 +31,7 @@
 * **ด้านซ้าย (Queries):** แสดงรายชื่อตารางที่กำลังทำงานอยู่
 * **ตรงกลาง:** แสดงข้อมูลในตาราง
 * **ด้านขวา (Applied Steps):** แสดงประวัติและขั้นตอนการจัดการข้อมูลทั้งหมด (สามารถลบหรือย้อนกลับได้)
-<img width="200" height="100" alt="image" src="https://github.com/user-attachments/assets/6d3f47d8-dadd-4983-b3b4-d24855f27781" />
+<img width="50%" height="50%" alt="image" src="https://github.com/user-attachments/assets/6d3f47d8-dadd-4983-b3b4-d24855f27781" />
 
 ---
 
