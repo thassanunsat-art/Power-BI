@@ -6,13 +6,21 @@
 2. รอจนหน้าจอเริ่มต้น (Start Screen) แสดงขึ้นมา
 
 ## 🚀 ขั้นตอนที่ 2: ขั้นตอนการนำเข้าข้อมูล:
+ ### EXcel,CSV
 1. คลิกที่เมนู **Home**
 2. คลิกปุ่ม **Get data**
 3. เลือก **Excel**
 4. คลิกปุ่ม **Connect**
-5. เลือกไฟล์ `workshop_all_provinces.xlsx`
+5. เลือกไฟล์ `workshop_all_provinces_dirty.xlsx`
 6. คลิกปุ่ม **Open**
 
+### SRHRE POINT 
+1. คลิกที่เมนู **Home**
+2. คลิกปุ่ม **Get data**
+3. เลือก **More-SharePoint folder**
+4. คลิกปุ่ม **Connect**
+5. Site URL `(https://nhcothai.sharepoint.com/sites/Project_Data_visualization)` ลิงก์ sharepoint ที่เก็บข้อมูล
+6. คลิกปุ่ม **Ok**
 ---
 
 ## 🔍 ขั้นตอนที่ 3: เลือกตาราง และเข้า Power Query
