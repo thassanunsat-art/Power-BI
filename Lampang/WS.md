@@ -3,7 +3,7 @@
  Add Column -> Custom Column 
  เติมข้อมูลดังนี้ 
       New column name 
-Custom column fomula
+      Custom column fomula
 ```
 {"มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน",
 "กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม"}
