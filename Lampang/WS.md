@@ -1,6 +1,5 @@
 # Get Data
 ###  File Excell : Home --> New Sources --> Excell --> เลือกไฟล์ที่ต้องนำเข้า --> OK
-<img width="447" height="347" alt="image" src="https://github.com/user-attachments/assets/5b137eaa-3b9d-4aab-882d-7cd47287ef82" />
 1. นำข้อมูล ชื่อวัคซีน เข้า โดยมีขั้นตอนดังนี้
    Home --> Query -->Advanced Editor
 
