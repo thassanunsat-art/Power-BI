@@ -107,7 +107,7 @@ in
     
     // 5. กรองเอาแถวที่เป็น null (ปีที่ไม่มีข้อมูลหรือดึงไม่สำเร็จ) ออกไปทันที
     FilteredRows = Table.SelectRows(InvokedFunction, each ([Data] <> null))
-in
+    in
     FilteredRows
     ```
 
