@@ -1,4 +1,4 @@
-# Get Data
+# 1. Get & Transform
 ## นำข้อมูลเข้า ดังนี้
 1. DIM_HealthCode_lampang : Home --> New Sources --> Excell --> เลือกไฟล์ที่ต้องนำเข้า --> OK
 2. DIM_EPI_Name : Home --> Query -->Advanced Editor --> วาง Code ที่แนบ
@@ -178,4 +178,6 @@ in
 
 4. ลบ  Rowe : target
 5. เปลี่ยนชื่อ Column : Vaccine
+
+
 
