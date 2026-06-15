@@ -16,6 +16,7 @@
    hospcode_H = "H" & [รหัส 5 หลัก]
 ```
 ### 2. FACT_EPI : 
+####*
 1. นำเม้าไปวางที่ตาราง FACT_EPI
 2. ที่เมนู Table tool เลือก New Column
 3. วาง Code ดังนี้
@@ -61,19 +62,53 @@ Measure_B_Target_Children =
 SUM('Fact_EPI_target'[จำนวนประชากร])
 ```
 
-### 2. Fact_EPI_target 
+### 2. Fact_EPI
+#### คำนวน จำนวนการฉีดวัคซีนในเด็ก ดังนี้
  1. นำเม้าไปวางที่ตาราง Fact_EPI_target
  2. ที่เมนู Table tool เลือก New measure
  3. วาง Code ดังนี้
 
         A_Vaccinated = SUM(FACT_EPI[Value])
-    
- 1. นำเม้าไปวางที่ตาราง Fact_EPI_target
+
+#### คำนวน ความครอบคลุมการฉีดวัคซีนในเด็ก ดังนี้   
+ 1. นำเม้าไปวางที่ตาราง Fact_EPI
  2. ที่เมนู Table tool เลือก New measure
  3. วาง Code ดังนี้
 
         % Coverage = 
          DIVIDE(FACT_EPI[A_Vaccinated], Fact_EPI_target[Measure_B_Target_Children], 0)
+
+#### ดึงค่าเข็มที่การ ฉีดวัคซีน
+1. นำเม้าไปวางที่ตาราง Fact_EPI
+2. ที่เมนู Table tool เลือก New Column
+3. วาง Code ดังนี้
+
+          Dose_Number = 
+         VAR _LastChar = RIGHT('ชื่อตารางของคุณ'[Vaccine], 1)
+         VAR _CheckNumber = IFERROR(VALUE(_LastChar), BLANK())
+         RETURN
+         IF(
+             ISBLANK(_CheckNumber),
+             "เข็มที่ 1",   // ถ้าวัคซีนไม่มีเลขกำกับ (เช่น bcg) จะให้แสดงผลเป็น เข็มที่ 1 หรือจะปล่อยว่างก็ได้โดยเปลี่ยนเป็น BLANK()
+             "เข็มที่ " & _LastChar
+         )
+
+#### ดึงชื่อเข็มที่การ ฉีดวัคซีน
+1. นำเม้าไปวางที่ตาราง Fact_EPI
+2. ที่เมนู Table tool เลือก New Column
+3. วาง Code ดังนี้
+   
+         Vaccine_NameOnly = 
+         VAR _FullText = 'ชื่อตารางของคุณ'[Vaccine]
+         VAR _LastChar = RIGHT(_FullText, 1)
+         VAR _IsNumber = IFERROR(VALUE(_LastChar), BLANK())
+         RETURN
+         IF(
+             ISBLANK(_IsNumber),
+             _FullText,                               // กรณีตัวสุดท้ายไม่ใช่ตัวเลข (เช่น bcg) ให้แสดงชื่อเต็มได้เลย
+             LEFT(_FullText, LEN(_FullText) - 1)      // กรณีตัวสุดท้ายเป็นตัวเลข ให้ตัดตัวอักษรขวาสุดออก 1 ตัว
+         )
+-------
 
 # Visualization
 ##### วิธีการสร้างและตั้งค่า Slicer
@@ -135,7 +170,7 @@ SUM('Fact_EPI_target'[จำนวนประชากร])
 2. **นำข้อมูล Vaccine ใส่ใน Slicer:**
    * ไปที่แพลนเนล **Data** ขยายตาราง `DIM_EPI` 
    * *(หมายเหตุ: อ้างอิงจากแผนภาพก่อนหน้า ข้อมูลวัคซีนอาจอยู่ในตาราง `FACT_EPI` ให้ใช้ตารางที่มีฟิลด์ข้อมูลวัคซีนของคุณ)*
-   * ลากฟิลด์ `Vaccine` มาวางในช่อง **Field** ของ Slicer ใหม่นี้
+   * ลากฟิลด์ `Vaccine_NameOnly` มาวางในช่อง **Field** ของ Slicer ใหม่นี้
 
 3. **ตั้งค่า Slicer Header เป็น "วัคซีน":**
    * ในขณะที่เลือก Slicer นี้อยู่ ให้ไปที่ไอคอน **Format your visual** (รูปแปรงทาสี)
