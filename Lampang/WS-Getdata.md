@@ -151,7 +151,7 @@ in
 5. เปลี่ยนชื่อ Column : Vaccine
 6. duplicate Fact_EPI เป็น Fact_EPI_target
 
-### 4. สร้างตาราง B_YEAR : 
+### 4. สร้างตาราง DIM_YEAR : 
 Home --> Query -->Advanced Editor --> วาง Code ที่แนบ
 
 ```
