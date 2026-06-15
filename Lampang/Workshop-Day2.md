@@ -8,15 +8,29 @@
 
 
 ## DAX ( add Column)
-### DIM_AREA : 
+### 1. DIM_AREA : 
 1. นำเม้าไปวางที่ตาราง DIM_AREA
 2. ที่เมนู Table tool เลือก New Column
 3. วาง Code ดังนี้
-
- '''
+```
    hospcode_H = "H" & [รหัส 5 หลัก]
+```
+### 2. FACT_EPI : 
+1. นำเม้าไปวางที่ตาราง FACT_EPI
+2. ที่เมนู Table tool เลือก New Column
+3. วาง Code ดังนี้
+```
+   hospcode_H = "H" & [รหัส 5 หลัก]
+```
+ ### 3. Fact_EPI_target : 
+1. นำเม้าไปวางที่ตาราง Fact_EPI_target
+2. ที่เมนู Table tool เลือก New Column
+3. วาง Code ดังนี้
+```
+   hospcode_H = "H" & [รหัส 5 หลัก]
+```
    
-   <img width="932" height="408" alt="image" src="https://github.com/user-attachments/assets/09119de1-78c2-49a1-818e-27e7b399df57" />
+   <img width="300" height="200" alt="image" src="https://github.com/user-attachments/assets/09119de1-78c2-49a1-818e-27e7b399df57" />
 
 
 ## Data Modeling (การสร้างแบบจำลองข้อมูล)
