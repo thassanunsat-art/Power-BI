@@ -29,9 +29,6 @@
 ```
    hospcode_H = "H" & [รหัส 5 หลัก]
 ```
-   
-   <img width="300" height="200" alt="image" src="https://github.com/user-attachments/assets/09119de1-78c2-49a1-818e-27e7b399df57" />
-
 
 ## Data Modeling (การสร้างแบบจำลองข้อมูล)
 เอกสารนี้อธิบายโครงสร้างความสัมพันธ์ของตารางข้อมูล (Data Model) สำหรับระบบข้อมูลการให้บริการวัคซีน (EPI) และเป้าหมาย ซึ่งประกอบไปด้วย Dimension Tables และ Fact Tables
