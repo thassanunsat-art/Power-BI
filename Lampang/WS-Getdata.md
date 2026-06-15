@@ -246,6 +246,11 @@ let
 in
     #"Changed Type"
 ```
+
+##  Code การเพิ่ม Column hospcode_H
+```
+hospcode_H = "H" & [hospcode]
+```
    
 
 
