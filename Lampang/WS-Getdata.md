@@ -251,6 +251,27 @@ in
 ```
 hospcode_H = "H" & [hospcode]
 ```
+##  คำนวน Target :  จำนวนเด็กอายุครบ 1 ปี ที่อาศัยอยู่จริงในพื้นที่รับผิดชอบทั้งหมด ในงวดที่รายงาน จากแฟ้ม Person ตามมาตรฐานโครงสร้าง 43 แฟ้ม (สถานะการอยู่อาศัย Type area = 1, 3)
+
+```
+Measure_B_Target_Children = 
+SUM('Fact_EPI_target'[จำนวนประชากร])
+```
+## หา จำนวนเด็กอายุครบ 1ปีในงวดที่รายงานที่ได้รับวัคซีน BCG,HBV1,DTP1,DTP3,HB3,Hib3,โปลิโอ3,MMR1,IPV,Rota ทั้งหมด
+```
+A_Vaccinated = 
+CALCULATE(
+    SUM('Fact_EPI'[Value]),
+    // ลบหรือแก้บรรทัดด้านล่างนี้ให้ตรงกับชื่อรหัสวัคซีนในตารางของคุณ
+    'Fact_EPI'[Vaccine]IN {"bcg", "hbv1", "dtp1", "dtp3", "hb3", "hib3", "polio3", "mmr1", "ipv", "rota"} 
+)
+```
+ 
+## หา Coverage
+```
+% Coverage = 
+DIVIDE(Fact_EPI[Sum-EPI], Fact_EPI_target[Measure_B_Target_Children], 0)
+
    
 
 
