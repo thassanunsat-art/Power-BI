@@ -209,18 +209,18 @@ let
     // 2. แปลงรายการปีให้เป็นตาราง
     YearsTable = Table.FromList(YearsList, Splitter.SplitByNothing(), {"Year"}, null, ExtraValues.Error),
     
-    // 3. ฟังก์ชันดึงข้อมูล พร้อมระบบตรวจสอบความผิดพลาด (Error & Empty Handling)
+    // 3. ฟังก์ชันดึงข้อมูล พร้อมระบบตรวจสอบความผิดพลาด (อัปเดต tableName เป็น s_op_instype_all ตามคอมเมนต์แล้ว)
     GetData = (TargetYear as text) =>
         let
             url = "https://opendata.moph.go.th/api/report_data",
             body = "{
-                ""tableName"": ""s_telemed_hosp"",
+                ""tableName"": ""s_epi1"",
                 ""year"": """ & TargetYear & """,
                 ""province"": ""52"",
                 ""type"": ""json""
             }",
             
-            // ใช้ try เพื่อดักจับกรณีที่ Web Response เกิด Error (เช่น 404, 500)
+            // ใช้ try เพื่อดักจับกรณีที่ Web Response เกิด Error
             Response = try Json.Document(Web.Contents(url, [
                 Headers = [#"Content-Type"="application/json"],
                 Content = Text.ToBinary(body),
@@ -234,17 +234,29 @@ let
                      else Response[Value]
         in
             Result,
-            
-    // 4. เรียกใช้งานฟังก์ชันเพื่อสร้างคอลัมน์ข้อมูล
-    InvokedFunction = Table.AddColumn(YearsTable, "Data", each GetData([Year])),
+
+    // 4. เรียกใช้ฟังก์ชันดึงข้อมูลตามปี (วนลูปตามรายการปีที่มีในตาราง)
+    InvokeGetData = Table.AddColumn(YearsTable, "Data", each GetData([Year])),
+
+    // 5. กรองเอาแถวที่ไม่มีข้อมูลออก (กรณีกดดึงแล้วเป็น null หรือ Error)
+    FilterNulls = Table.SelectRows(InvokeGetData, each ([Data] <> null)),
+
+    // 6. แตกข้อมูล (Expand) ออกมาเป็นตารางเดียวกัน
+    // หมายเหตุ: ตรงขั้นตอนนี้ Power Query จะทำการ Expand คอลัมน์ที่ได้จาก API 
+    // หากโครงสร้าง API ของคุณส่งค่าออกมาเป็น List ของ Record ระบบจะแตกออกมาให้โดยอัตโนมัติครับ
+    ExpandedData = Table.ExpandListColumn(FilterNulls, "Data"),
     
-    // 5. กรองเอาแถวที่เป็น null (ปีที่ไม่มีข้อมูลหรือดึงไม่สำเร็จ) ออกไปทันที
-    FilteredRows = Table.SelectRows(InvokedFunction, each ([Data] <> null)),
-    #"Expanded Data" = Table.ExpandListColumn(FilteredRows, "Data"),
-    #"Expanded Data1" = Table.ExpandRecordColumn(#"Expanded Data", "Data", {"id", "hospcode", "areacode", "date_com", "b_year", "result"}, {"id", "hospcode", "areacode", "date_com", "b_year", "result"}),
-    #"Changed Type" = Table.TransformColumnTypes(#"Expanded Data1",{{"b_year", Int64.Type}, {"result", Int64.Type}})
+    // 7. ดึงฟิลด์ต่างๆ ภายใน Record ออกมา (สมมติฟิลด์มาตรฐานทั่วไป หาก API คืนค่าฟิลด์อื่น สามารถกดเลือกเพิ่มที่หน้าต่าง Power Query ได้ครับ)
+    CustomExpanded = Table.ExpandRecordColumn(ExpandedData, "Data", Record.FieldNames(Table.Column(ExpandedData, "Data"){0}? ?? [Dummy=null])),
+    #"Unpivoted Columns" = Table.UnpivotOtherColumns(CustomExpanded, {"Year", "id", "hospcode", "areacode", "date_com", "b_year"}, "Attribute", "Value"),
+    #"Added Custom" = Table.AddColumn(#"Unpivoted Columns", "Month", each {"มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม"}{Number.From(Text.End([Attribute], 2)) - 1}),
+    #"Added Custom Column" = Table.AddColumn(#"Added Custom", "Custom", each let splitAttribute = Splitter.SplitTextByDelimiter("_", QuoteStyle.None)([Attribute]) in Text.Combine({Text.Start([Attribute], 6), Text.Middle(splitAttribute{1}?, 2)}), type text),
+    #"Reordered Columns" = Table.ReorderColumns(#"Added Custom Column",{"Year", "id", "hospcode", "areacode", "date_com", "b_year", "Custom", "Value", "Month"}),
+    #"Changed Type2" = Table.TransformColumnTypes(#"Reordered Columns",{{"Value", Int64.Type}}),
+    #"Renamed Columns" = Table.RenameColumns(#"Changed Type2",{{"Value", "จำนวนประชากร"}}),
+    #"Filtered Rows" = Table.SelectRows(#"Renamed Columns", each ([Custom] = "target"))
 in
-    #"Changed Type"
+    #"Filtered Rows"
 ```
 
 ##  Code การเพิ่ม Column hospcode_H
