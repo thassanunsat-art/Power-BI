@@ -13,7 +13,7 @@ let
         let
             url = "https://opendata.moph.go.th/api/report_data",
             body = "{
-                ""tableName"": ""s_pop_sex_age"",
+                ""tableName"": ""s_pop_sex_age (เปลี่ยนชื่อตาราง)"",
                 ""year"": """ & TargetYear & """,
                 ""province"": ""52"",
                 ""type"": ""json""
